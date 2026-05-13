@@ -100,13 +100,14 @@
   }
   .hero-title-accent {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    font-size: 0.95rem;
     font-weight: 300;
     color: var(--muted);
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     margin-bottom: 2rem;
     border-left: 2px solid var(--gold);
     padding-left: 1rem;
+    white-space: nowrap;
   }
   .hero-desc {
     font-size: 0.95rem;
@@ -396,17 +397,22 @@
   /* ── CONTACT ── */
   .contact { background: var(--warm); }
   .contact-inner {
-    max-width: 700px; margin: 0 auto;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .contact-top {
     text-align: center;
+    margin-bottom: 3.5rem;
   }
   .contact-intro {
     font-size: 1rem; color: var(--muted);
-    line-height: 1.8; margin: 1.5rem 0 3rem;
+    line-height: 1.8; margin: 1.5rem auto 0;
+    max-width: 600px;
   }
   .contact-grid {
     display: grid; grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
     text-align: center;
+    margin-bottom: 3.5rem;
   }
   .contact-item a {
     text-decoration: none; color: var(--forest);
@@ -421,6 +427,142 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
+  }
+
+  /* Form + Calendar two-column */
+  .contact-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-col-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  /* Form styles */
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--forest);
+    font-weight: 500;
+  }
+  .form-input, .form-textarea {
+    background: var(--cream);
+    border: 1px solid rgba(45,61,40,0.2);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--sage);
+  }
+  .form-textarea { resize: vertical; min-height: 90px; }
+  .services-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .service-option { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+  .service-option input[type="checkbox"] { display: none; }
+  .service-checkbox {
+    width: 16px; height: 16px; min-width: 16px;
+    border: 1px solid rgba(45,61,40,0.3);
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .service-option input:checked + .service-checkbox {
+    background: var(--forest);
+    border-color: var(--forest);
+  }
+  .service-option input:checked + .service-checkbox::after {
+    content: '✓';
+    color: var(--cream);
+    font-size: 0.7rem;
+    line-height: 1;
+  }
+  .service-text {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .form-submit {
+    background: var(--forest);
+    color: var(--cream);
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--sage); }
+  .form-success {
+    display: none;
+    background: rgba(45,61,40,0.08);
+    border-left: 3px solid var(--sage);
+    padding: 1rem 1.2rem;
+    font-size: 0.88rem;
+    color: var(--forest);
+    line-height: 1.6;
+  }
+  /* Calendar button */
+  .calendar-embed {
+    background: var(--cream);
+    border: 1px solid rgba(45,61,40,0.12);
+    overflow: hidden;
+  }
+  .calendar-placeholder {
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+  }
+  .calendar-icon { font-size: 3rem; }
+  .calendar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--forest);
+  }
+  .calendar-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 320px;
+  }
+  .calendar-btn {
+    display: inline-block;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 0.5rem;
+  }
+  .calendar-btn:hover { background: var(--sage); transform: translateY(-2px); }
+
+  @media (max-width: 900px) {
+    .contact-columns { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .calendar-embed iframe { height: 460px; }
   }
 
   /* ── FOOTER ── */
@@ -483,7 +625,7 @@
   <div class="hero-text fade-in">
     <div class="hero-eyebrow">Open to Remote Opportunities</div>
     <h1>Hi, I'm<br><em>Maricon!</em></h1>
-    <div class="hero-title-accent">Executive Assistant &nbsp; Social Media Manager &nbsp; Virtual Assistant</div>
+    <div class="hero-title-accent">Executive Assistant &nbsp;|&nbsp; Social Media Manager &nbsp;|&nbsp; Virtual Assistant</div>
     <p class="hero-desc">
       I love making things run smoothly. Whether it's keeping an exec's calendar sane, building a content strategy from scratch, or editing a video that actually stops the scroll... I bring heart and hustle to everything I do.
     </p>
@@ -708,11 +850,15 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner fade-in">
-    <div class="section-label" style="justify-content:center">Say Hello</div>
-    <h2>I'd love to <em>hear from you</em></h2>
-    <p class="contact-intro">
-      I'm currently looking for my next remote role and I'm genuinely excited about it! If you think we'd be a good fit, or even just want to chat about a project, please reach out. I reply fast and I don't bite. 😊
-    </p>
+
+    <div class="contact-top">
+      <div class="section-label" style="justify-content:center">Say Hello</div>
+      <h2>I'd love to <em>hear from you</em></h2>
+      <p class="contact-intro">
+        I'm currently looking for my next remote role and I'm genuinely excited about it! If you think we'd be a good fit, or even just want to chat about a project, please reach out. I reply fast and I don't bite. 😊
+      </p>
+    </div>
+
     <div class="contact-grid">
       <div class="contact-item">
         <a href="mailto:mariconmabueg@gmail.com">
@@ -735,6 +881,87 @@
           wke.lt/w/s/lvQgjT
         </a>
       </div>
+    </div>
+
+    <div class="contact-columns">
+
+      <!-- INQUIRY FORM -->
+      <div>
+        <div class="contact-col-label">Send an Inquiry</div>
+        <div class="form-success" id="formSuccess">
+          Thank you for reaching out! I'll get back to you as soon as possible. Looking forward to connecting! 🌿
+        </div>
+        <div class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label class="form-label" for="emailInput">Your Email Address</label>
+            <input class="form-input" type="email" id="emailInput" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What services are you looking for?</label>
+            <div class="services-grid">
+              <label class="service-option">
+                <input type="checkbox" value="Administrative Support">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Administrative Support</span>
+              </label>
+              <label class="service-option">
+                <input type="checkbox" value="Social Media Management">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Social Media Management</span>
+              </label>
+              <label class="service-option">
+                <input type="checkbox" value="Graphic Design Assistance">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Graphic Design Assistance</span>
+              </label>
+              <label class="service-option">
+                <input type="checkbox" value="Project Management">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Project Management</span>
+              </label>
+              <label class="service-option">
+                <input type="checkbox" value="Calendar & Email Management">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Calendar &amp; Email Management</span>
+              </label>
+              <label class="service-option">
+                <input type="checkbox" value="Content Scheduling">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Content Scheduling</span>
+              </label>
+              <label class="service-option">
+                <input type="checkbox" value="Client Communication & Coordination">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Client Communication &amp; Coordination</span>
+              </label>
+              <label class="service-option">
+                <input type="checkbox" value="Research & Data Organization">
+                <span class="service-checkbox"></span>
+                <span class="service-text">Research &amp; Data Organization</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="messageInput">Anything else you'd like to share? (optional)</label>
+            <textarea class="form-textarea" id="messageInput" placeholder="Tell me a bit about your project or what you need help with..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Send Message</button>
+        </div>
+      </div>
+
+      <!-- BOOKING CALENDAR -->
+      <div>
+        <div class="contact-col-label">Book a Discovery Call</div>
+        <div class="calendar-embed">
+          <div class="calendar-placeholder">
+            <div class="calendar-icon">📅</div>
+            <p class="calendar-title">Book a Discovery Call</p>
+            <p class="calendar-desc">Let's find a time that works for both of us! Click below to view my availability and book a free discovery call.</p>
+            <a href="https://calendar.app.google/CEz65Qq6p8tZ5ZUr9" target="_blank" class="calendar-btn">View My Calendar & Book a Call</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -764,6 +991,30 @@
     document.getElementById('lightbox').classList.remove('open');
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Form submit
+  function submitForm() {
+    const email = document.getElementById('emailInput').value.trim();
+    const checked = [...document.querySelectorAll('.contact-form input[type="checkbox"]:checked')].map(c => c.value);
+    const message = document.getElementById('messageInput').value.trim();
+
+    if (!email) { alert('Please enter your email address.'); return; }
+    if (!email.includes('@')) { alert('Please enter a valid email address.'); return; }
+    if (checked.length === 0) { alert('Please select at least one service.'); return; }
+
+    const subject = encodeURIComponent('Portfolio Inquiry: ' + checked.join(', '));
+    const body = encodeURIComponent(
+      'Hi Maricon,\n\nI found your portfolio and I\'m interested in the following services:\n' +
+      checked.map(s => '  - ' + s).join('\n') +
+      (message ? '\n\nAdditional notes:\n' + message : '') +
+      '\n\nReply to: ' + email
+    );
+
+    window.location.href = 'mailto:mariconmabueg@gmail.com?subject=' + subject + '&body=' + body;
+
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
 </script>
 </body>
 </html>
